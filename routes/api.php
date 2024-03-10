@@ -39,6 +39,8 @@ Route::group([
 ], function () {
     Route::get('/', [AccountController::class, 'index']);
     Route::post('/store', [AccountController::class, 'store']);
+    Route::post('/update/{id}', [AccountController::class, 'update']);
     Route::get('/show/{id}', [AccountController::class, 'show']);
     Route::get('/showAccount/{id}', [AccountController::class, 'showAccount']);
+    Route::delete('/delete/{id}', [AccountController::class, 'destroy']);
 });

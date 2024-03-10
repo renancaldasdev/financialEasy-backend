@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AccountCreateOrUpdateRequest extends FormRequest
 {
@@ -21,8 +22,14 @@ class AccountCreateOrUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $accountId = $this->route('id'); // Obtém o ID da conta da rota
+
         return [
-            'account_name' => 'string|required|max:255|unique:accounts',
+            'account_name' => [
+                'required',
+                Rule::unique('accounts')->ignore($accountId),
+            ],
         ];
     }
 
