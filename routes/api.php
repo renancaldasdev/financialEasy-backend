@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -30,4 +31,14 @@ Route::group([
 ], function () {
     Route::get('/', [UserController::class, 'index']);
     Route::put('/update/{id}', [UserController::class, 'updateUser']);
+});
+
+Route::group([
+    'prefix' => 'accounts',
+    'middleware' => 'auth:sanctum',
+], function () {
+    Route::get('/', [AccountController::class, 'index']);
+    Route::post('/store', [AccountController::class, 'store']);
+    Route::get('/show/{id}', [AccountController::class, 'show']);
+    Route::get('/showAccount/{id}', [AccountController::class, 'showAccount']);
 });
