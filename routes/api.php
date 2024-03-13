@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +56,34 @@ Route::group(['prefix' => 'goals', 'middleware' => 'auth:sanctum'], function () 
     Route::post('/update/{id}', [GoalController::class, 'update']);
     Route::delete('/delete/{id}', [GoalController::class, 'destroy']);
 });
+
+Route::group(
+    [
+        'prefix' => 'category',
+        'middleware' => 'auth:sanctum',
+    ],
+    function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::get('/show/{id}', [CategoryController::class, 'show']);
+        Route::get('/showGoal/{id}', [CategoryController::class, 'showgoal']);
+        Route::post('/store', [CategoryController::class, 'store']);
+        Route::post('/update/{id}', [CategoryController::class, 'update']);
+        Route::delete('/delete/{id}', [CategoryController::class, 'destroy']);
+    }
+);
+
+
+Route::group(
+    [
+        'prefix' => 'transaction',
+        'middleware' => 'auth:sanctum',
+    ],
+    function () {
+        Route::get('/', [TransactionController::class, 'index']);
+        Route::get('/show/{id}', [TransactionController::class, 'show']);
+        Route::get('/showGoal/{id}', [TransactionController::class, 'showgoal']);
+        Route::post('/store', [TransactionController::class, 'store']);
+        Route::post('/update/{id}', [TransactionController::class, 'update']);
+        Route::delete('/delete/{id}', [TransactionController::class, 'destroy']);
+    }
+);
