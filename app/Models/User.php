@@ -48,4 +48,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class);
     }
+
+    public function goals()
+    {
+        return $this->hasMany(Goals::class);
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

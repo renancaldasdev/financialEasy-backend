@@ -6,24 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Account extends Model
+class Goals extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'account_name',
-        'opening_balance',
-        'balance',
+        'name',
+        'goal_value',
+        'deadline',
+    ];
+
+    protected $casts = [
+        'deadline' => 'date',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function transaction()
-    {
-        return $this->hasMany(Transaction::class);
     }
 }

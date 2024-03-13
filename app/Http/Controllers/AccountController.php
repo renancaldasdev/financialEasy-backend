@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use LDAP\Result;
+
 
 class AccountController extends Controller
 {
@@ -65,7 +65,6 @@ class AccountController extends Controller
         try {
             $user = Auth::user();
             $account = $user->accounts()->findOrFail($id);
-
             return response()->json(['account' => $account]);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao buscar a conta: ' . $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -81,8 +80,6 @@ class AccountController extends Controller
             $authenticatedUserId = Auth::id();
 
             $account = Account::findOrFail($id);
-
-            dd($account);
 
             if ($authenticatedUserId != $account->user_id) {
                 return response()->json(['message' => 'Você não tem permissão para atualizar esta conta'], Response::HTTP_FORBIDDEN);

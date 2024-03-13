@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,13 @@ Route::group([
     Route::get('/show/{id}', [AccountController::class, 'show']);
     Route::get('/showAccount/{id}', [AccountController::class, 'showAccount']);
     Route::delete('/delete/{id}', [AccountController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'goals', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/', [GoalController::class, 'index']);
+    Route::get('/show/{id}', [GoalController::class, 'show']);
+    Route::get('/showGoal/{id}', [GoalController::class, 'showgoal']);
+    Route::post('/store', [GoalController::class, 'store']);
+    Route::post('/update/{id}', [GoalController::class, 'update']);
+    Route::delete('/delete/{id}', [GoalController::class, 'destroy']);
 });
