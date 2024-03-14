@@ -89,7 +89,7 @@ class AccountController extends Controller
                 'account_name' => $request->account_name,
             ]);
 
-            return response()->json(['message' => 'A Conta ' . $account->account_name . ' foi atualizada com sucesso']);
+            return response()->json(['message' => 'A Conta ' . $account->account_name . ' foi atualizada com sucesso'], Response::HTTP_OK);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Conta não encontrada'], Response::HTTP_NOT_FOUND);
         } catch (\Exception $e) {

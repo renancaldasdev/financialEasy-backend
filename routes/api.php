@@ -51,7 +51,7 @@ Route::group([
 Route::group(['prefix' => 'goals', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/', [GoalController::class, 'index']);
     Route::get('/show/{id}', [GoalController::class, 'show']);
-    Route::get('/showGoal/{id}', [GoalController::class, 'showgoal']);
+    Route::get('/showallgoals/{id}', [GoalController::class, 'showgoal']);
     Route::post('/store', [GoalController::class, 'store']);
     Route::post('/update/{id}', [GoalController::class, 'update']);
     Route::delete('/delete/{id}', [GoalController::class, 'destroy']);
@@ -65,7 +65,7 @@ Route::group(
     function () {
         Route::get('/', [CategoryController::class, 'index']);
         Route::get('/show/{id}', [CategoryController::class, 'show']);
-        Route::get('/showGoal/{id}', [CategoryController::class, 'showgoal']);
+        Route::get('/showallcategory/{id}', [CategoryController::class, 'showallcategory']);
         Route::post('/store', [CategoryController::class, 'store']);
         Route::post('/update/{id}', [CategoryController::class, 'update']);
         Route::delete('/delete/{id}', [CategoryController::class, 'destroy']);
@@ -81,7 +81,7 @@ Route::group(
     function () {
         Route::get('/', [TransactionController::class, 'index']);
         Route::get('/show/{id}', [TransactionController::class, 'show']);
-        Route::get('/showGoal/{id}', [TransactionController::class, 'showgoal']);
+        Route::get('/showalltransaction/{id}', [TransactionController::class, 'showgoal']);
         Route::post('/store', [TransactionController::class, 'store']);
         Route::post('/update/{id}', [TransactionController::class, 'update']);
         Route::delete('/delete/{id}', [TransactionController::class, 'destroy']);
