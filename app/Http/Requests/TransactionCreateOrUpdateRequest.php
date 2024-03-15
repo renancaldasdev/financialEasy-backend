@@ -11,7 +11,7 @@ class TransactionCreateOrUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,27 @@ class TransactionCreateOrUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => 'required|exists:users,id',
+            'account_id' => 'required|exists:accounts,id',
+            'category_id' => 'required|exists:categories,id',
+            'type' => 'required|in:revenue,expense',
+            'value' => 'required|numeric',
+            'description' => 'required|string',
+            'date' => 'required|date',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'user_id.required' => 'Usuário obrigatório',
+            'account_id.required' => 'Conta obrigatória',
+            'category_id.required' => 'Categória obrigatória',
+            'type.required' => 'Tipo obrigatório',
+            'category.required' => 'Categória obrigatória',
+            'value.required' => 'Valor obrigatório',
+            'description.required' => 'Descrição obrigatória',
+            'date.required' => 'Data obrigatória',
         ];
     }
 }

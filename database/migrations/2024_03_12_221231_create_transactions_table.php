@@ -17,9 +17,8 @@ return new class extends Migration
             $table->foreignId('account_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->enum('type', ['revenue', 'expense']);
-            $table->integer('category');
             $table->float('value');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->date('date');
             $table->timestamps();
             $table->softDeletes();

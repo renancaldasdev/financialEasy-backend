@@ -81,7 +81,7 @@ Route::group(
     function () {
         Route::get('/', [TransactionController::class, 'index']);
         Route::get('/show/{id}', [TransactionController::class, 'show']);
-        Route::get('/showalltransaction/{id}', [TransactionController::class, 'showgoal']);
+        Route::get('/showalltransaction/{id}', [TransactionController::class, 'showalltransaction']);
         Route::post('/store', [TransactionController::class, 'store']);
         Route::post('/update/{id}', [TransactionController::class, 'update']);
         Route::delete('/delete/{id}', [TransactionController::class, 'destroy']);

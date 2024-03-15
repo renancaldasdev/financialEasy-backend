@@ -31,7 +31,7 @@ class CategoryController extends Controller
                 'name' => $request->name,
                 'type' => $request->type
             ]);
-            return response()->json(['Conta criada com sucesso'], Response::HTTP_CREATED);
+            return response()->json(['Categoria ' . $request->name . ' criada com sucesso'], Response::HTTP_CREATED);
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->toArray();
             return response()->json(['error' => $errors], Response::HTTP_NOT_FOUND);
