@@ -72,7 +72,6 @@ Route::group(
     }
 );
 
-
 Route::group(
     [
         'prefix' => 'transaction',

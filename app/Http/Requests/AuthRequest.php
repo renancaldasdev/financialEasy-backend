@@ -22,7 +22,7 @@ class AuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:3',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8'
         ];
@@ -32,8 +32,10 @@ class AuthRequest extends FormRequest
     {
         return [
             'name.required' => 'Nome do usuário é obrigatório',
+            'name.min' =>  'O nome deve ter pelo menos 3 caracteres',
             'email.required' => 'E-mail é obrigatório',
             'email.unique' => 'E-mail já cadastrado',
+            'password.required' => 'A senha é obrigatória',
             'password.min' => 'A senha deve possuir pelo menos 8 caracteres'
         ];
     }
