@@ -39,7 +39,7 @@ class AuthController extends Controller
                 $user = Auth::user();
                 $token = $user->createToken('auth_token')->plainTextToken;
 
-                return response()->json(['access_token' => $token, 'message' => 'Seja Bem vindo ' . $user->name], Response::HTTP_OK);
+                return response()->json(['access_token' => $token, 'message' => 'Seja Bem vindo, ' . $user->name . '!!'], Response::HTTP_OK);
             } else {
                 return response()->json(['message' => 'Não autorizado, email ou senha incorretos.'], Response::HTTP_UNAUTHORIZED);
             }
