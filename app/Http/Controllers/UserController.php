@@ -42,4 +42,15 @@ class UserController extends Controller
             return response()->json(['message' => 'Ocorreu um erro interno ao processar a solicitação'], 500);
         }
     }
+
+    public function showUser()
+    {
+        try {
+            $authenticatedUserId = Auth::id();
+            $usuario = User::findOrFail($authenticatedUserId);
+            return response()->json($usuario);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Usuário não encontrado'], 404);
+        }
+    }
 }

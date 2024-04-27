@@ -36,6 +36,7 @@ Route::group([
 ], function () {
     Route::get('/', [UserController::class, 'index']);
     Route::put('/update/{id}', [UserController::class, 'updateUser']);
+    Route::get('/showuser', [UserController::class, 'showUser']);
 });
 
 Route::group([
